@@ -1,0 +1,24 @@
+=== VOCABULARY (5000-review sample, html removed) ===
+Tokens: 1174380
+Types (vocabulary size): 42689
+Type/token ratio: 0.0364
+Words appearing only once (hapax legomena): 18109 (42.4% of vocabulary)
+
+Top 15 words:
+  the        67255
+  and        33137
+  a          32819
+  of         29269
+  to         27485
+  is         21487
+  in         18732
+  it         15887
+  i          15466
+  this       15239
+  that       13725
+  was        9648
+  as         9286
+  with       8847
+  for        8828
+
+Top 100 words cover 50.3% of all tokens
