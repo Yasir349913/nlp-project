@@ -1,0 +1,59 @@
+=== 1. SHAPE ===
+Train: (25000, 2)
+Test: (25000, 2)
+
+=== 2. QUALITY CHECKS ===
+Missing values (train):
+text     0
+label    0
+dtype: int64
+Duplicate reviews (train): 96
+Duplicate reviews (test): 199
+Train/Test overlap: 123
+
+=== 3. LABEL BALANCE (train) ===
+label
+negative    12500
+positive    12500
+Name: count, dtype: int64
+
+=== 4. REVIEW LENGTH (words) ===
+count    25000.000000
+mean       233.787200
+std        173.733032
+min         10.000000
+25%        127.000000
+50%        174.000000
+75%        284.000000
+max       2470.000000
+Name: word_count, dtype: float64
+
+By label:
+         count       mean         std   min    25%    50%    75%     max
+label                                                                   
+0      12500.0  230.86784  166.663126  10.0  128.0  174.0  278.0  1522.0
+1      12500.0  236.70656  180.485743  12.0  125.0  174.0  291.0  2470.0
+
+=== 5. NOISE CHECK ===
+Reviews with HTML tags: 58.7%
+Reviews with URLs: 0.2%
+
+HTML wali ek sample review:
+I rented I AM CURIOUS-YELLOW from my video store because of all the controversy that surrounded it when it was first released in 1967. I also heard that at first it was seized by U.S. customs if it ever tried to enter this country, therefore being a fan of films considered "controversial" I really had to see this for myself.<br /><br />The plot is centered around a young Swedish drama student named Lena who wants to learn everything she can about life. In particular she wants to focus her attent
+
+=== 6. SAMPLE REVIEWS ===
+------------------------------------------------------------
+LABEL: negative
+- Wow, what a total let down! The fact people think this film is scary is ridiculous. The special effects were a direct rip-off of "The ring." The story? Was there one? Not in my opinion..Just a bunch of flashy imaging. The entire film was a boring, stupid, mess. I guess there is always a market for b ...
+
+- If Bob Ludlum was to see this mini series, he would have cried. This was complete waste of time and money. I have read the book and even though movies are not exactly what the book may be, CBS wasted time and money on this and it is embarrassing to claim that this was Ludlum's work.<br /><br />May b ...
+
+- To call a film about a crippled ghost taking revenge from beyond the grave lame and lifeless would be too ironical but this here is an undeniably undistinguished combination of GASLIGHT (1939 & 1944) via LES DIABOLIQUES (1954); while still watchable in itself, it's so cliché-ridden as to provoke chu ...
+
+------------------------------------------------------------
+LABEL: positive
+- This movie is to Halloween what the hilarious "Christmas Story" is to Christmas: both are relatively low-budget, no-big-name-stars type films...and both are two of the absolute greatest and funniest movies available, both seasonal CLASSICS!!! "Spaced Invaders" comes galloping out right from the star ...
+
+- Good western filmed in the rocky Arizona wilds. Lots of tough guys throughout; Cobern's character seemed to rock back and forth between a raging psycho and a laid back type. Several holes appeared in the picture, but not enough to offset it being exciting and worth seeing. One really dumb scene show ...
+
+- John Singleton's finest film, before blockbuster wannabees like the Shaft remake, this is a thought-provoking movie with overall great acting and superb balance between the stories 3 main characters, each with identifiable youngster problems.<br /><br />What I liked about it most is that it also cov ...
