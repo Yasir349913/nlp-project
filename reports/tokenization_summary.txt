@@ -1,0 +1,46 @@
+=== 1. TOKENIZER COMPARISON ===
+
+SENTENCE: I didn't like it, honestly 3/10... Can't recommend!!!
+  regex : ['I', "didn't", 'like', 'it', 'honestly', '3/10', '...', "Can't", 'recommend', '!!!']
+  nltk  : ['I', 'did', "n't", 'like', 'it', ',', 'honestly', '3/10', '...', 'Ca', "n't", 'recommend', '!', '!', '!']
+  spacy : ['I', 'did', "n't", 'like', 'it', ',', 'honestly', '3/10', '...', 'Ca', "n't", 'recommend', '!', '!', '!']
+
+SENTENCE: The plot is CURIOUS-YELLOW style<br /><br />but sooo boring.
+  regex : ['The', 'plot', 'is', 'CURIOUS', 'YELLOW', 'style', 'br', 'br', 'but', 'sooo', 'boring', '.']
+  nltk  : ['The', 'plot', 'is', 'CURIOUS-YELLOW', 'style', '<', 'br', '/', '>', '<', 'br', '/', '>', 'but', 'sooo', 'boring', '.']
+  spacy : ['The', 'plot', 'is', 'CURIOUS', '-', 'YELLOW', 'style', '<', 'br', '/><br', '/>but', 'sooo', 'boring', '.']
+
+SENTENCE: Directed by Mr. Smith in 1967, it costs $5.99 :) www.imdb.com
+  regex : ['Directed', 'by', 'Mr', '.', 'Smith', 'in', '1967', 'it', 'costs', '5', '.', '99', 'www', '.', 'imdb', '.', 'com']
+  nltk  : ['Directed', 'by', 'Mr.', 'Smith', 'in', '1967', ',', 'it', 'costs', '$', '5.99', ':', ')', 'www.imdb.com']
+  spacy : ['Directed', 'by', 'Mr.', 'Smith', 'in', '1967', ',', 'it', 'costs', '$', '5.99', ':)', 'www.imdb.com']
+
+SENTENCE: It's a must-see, isn't it? Loved it!!! 10/10
+  regex : ["It's", 'a', 'must', 'see', "isn't", 'it', '?', 'Loved', 'it', '!!!', '10/10']
+  nltk  : ['It', "'s", 'a', 'must-see', ',', 'is', "n't", 'it', '?', 'Loved', 'it', '!', '!', '!', '10/10']
+  spacy : ['It', "'s", 'a', 'must', '-', 'see', ',', 'is', "n't", 'it', '?', 'Loved', 'it', '!', '!', '!', '10/10']
+
+=== 2. REGEX PATTERNS ON TRAIN ===
+html_tag   | pattern: <[^>]+>
+           | meaning: '<' then any chars except '>' then '>'; matches <br />
+           | reviews matching: 14667 (58.7%), example: '<br />'
+rating     | pattern: \b\d{1,2}(?:\.\d)?\s*/\s*10\b
+           | meaning: 1-2 digits, optional decimal, '/10'; matches 8/10, 7.5/10
+           | reviews matching: 1505 (6.0%), example: '2/10'
+elongated  | pattern: (\w)\1{2,}
+           | meaning: a char followed by itself 2+ more times; matches sooo, greaaat
+           | reviews matching: 1351 (5.4%), example: 'rrrrrrrrrr'
+url        | pattern: http\S+|www\.\S+
+           | meaning: http... or www... up to next whitespace
+           | reviews matching: 95 (0.4%), example: 'http://rateyourmusic.com/list/Fedor8/150_worst_cases_of_nepotism/'
+year       | pattern: \b(?:19|20)\d{2}\b
+           | meaning: 4-digit year starting with 19 or 20; matches 1967, 2004
+           | reviews matching: 3820 (15.3%), example: '1967'
+all_caps   | pattern: \b[A-Z]{3,}\b
+           | meaning: 3+ capital letters; matches GASLIGHT, CLASSICS (emphasis)
+           | reviews matching: 9445 (37.8%), example: 'CURIOUS'
+
+=== 3. TOKENS vs TYPES (1000 sample reviews) ===
+regex  tokens:   249482  types:   18803  type/token ratio: 0.075
+nltk   tokens:   280613  types:   20521  type/token ratio: 0.073
+spacy  tokens:   271072  types:   20248  type/token ratio: 0.075
